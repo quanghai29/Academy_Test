@@ -30,4 +30,14 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "academy-for-test" #Must be unique in Heroku
           heroku_email: "lequanghai540@gmail.com"
+      env:
+          DB_HOST: us-cdbr-east-04.cleardb.com
+          DB_PORT: 3306
+          DB_USER: bdb3d2ad4e1fad
+          DB_PASSWORD: 590dc949
+          DB_NAME: heroku_2918cd1316c63a1
+          NODE_ENVIROMMENT: pro
+          HOST:  https://academy-for-test.herokuapp.com/
+          HOST_NAME: https://academy-for-test.herokuapp.com/
+          URL:  https://academy-for-test.herokuapp.com/
     - run: npm i
