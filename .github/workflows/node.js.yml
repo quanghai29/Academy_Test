@@ -25,4 +25,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "academy-for-test" #Must be unique in Heroku
+          heroku_email: "lequanghai540@gmail.com"
     - run: npm i
