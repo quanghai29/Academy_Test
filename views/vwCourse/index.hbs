@@ -1,0 +1,80 @@
+{{#section 'css'}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.css" />
+<style>
+</style>
+{{/section}}
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" id="btnLoadCourses" class="btn btn-outline-danger btn-lg btn-block">
+          Load course
+        </button>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12">
+        <div class="card">
+          <h3 class="card-header d-flex justify-content-between">
+            Course List from Academy
+            <a class="btn btn-primary" href="/view/course/add" role="button">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              Add Course
+            </a>
+          </h3>
+          <div class="card-body">
+            <table class="table table-hover" id="resultTable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Short Description</th>
+                  <th scope="col">Last Update</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer text-muted">
+            Footer
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{{#section 'js'}}
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.js"></script>
+<script>
+    var table;
+    table = $("#resultTable").DataTable();
+    $('#btnLoadCourses').on('click', function () {
+      $.ajax({
+        url: 'http://localhost:3000/course/all',
+        type: 'GET'
+      }).done(function (data) {
+        var html = ``;
+        for (f of data) {
+          const tr = `<tr>
+                  <th scope="row">${f.id}</th>
+                  <td>${f.title}</td>
+                  <td>${f.price || 0}</td>
+                  <td>${f.discount || 0}</td>
+                  <td>${f.short_description || ""}</td>
+                  <td>${f.last_update}</td>
+                </tr>`;
+          html += tr;
+        }
+
+        table.destroy();
+        $("#resultTable tbody").empty();
+        $("#resultTable tbody").html(html);
+        table = $("#resultTable").DataTable();
+      })
+    });
+
+</script>
+{{/section}}

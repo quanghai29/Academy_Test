@@ -1,0 +1,72 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <h3 class="card-header">
+            <i class="fa fa-film" aria-hidden="true"></i>
+            New Course Info
+          </h3>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="txtTitle">Title</label>
+                <input type="text" id="txtTitle" class="form-control" placeholder="ACE GOLDFINGER" autofocus>
+              </div>
+              <div class="form-group">
+                <label for="txtLang">Category Id</label>
+                <input type="number" id="txtCategoryId" class="form-control" value="1">
+              </div>
+              <div class="form-group">
+                <label for="txtYear">Lecture Id</label>
+                <input type="number" id="txtLectureId" class="form-control" value="1">
+              </div>
+               <div class="form-group">
+                <label for="txtYear">Price</label>
+                <input type="number" id="txtPrice" class="form-control" placeholder="200000">
+              </div>
+              <button type="button" id="btnSave" class="btn btn-outline-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Save
+              </button>
+              <a class="btn btn-primary" href="/view/course" role="button">
+                <i class="fa fa-arrow-left"></i>
+                Back Course
+              </a>
+            </form>
+          </div>
+          <div class="card-footer text-muted">
+            Footer
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{#section 'js'}}
+<script>
+     $('#btnSave').on('click', function () {
+      const dataToPost = {
+        title: $('#txtTitle').val(),
+        lecturer_id: +$('#txtCategoryId').val(),
+        category_id: +$('#txtLectureId').val(),
+        price: +$("#txtPrice").val()
+      }
+
+      const jsonToPost = JSON.stringify(dataToPost);
+      $.ajax({
+        url: 'http://localhost:3000/lecturer/course',
+        type: 'POST',
+        dataType: 'json',
+        data: jsonToPost,
+        contentType: 'application/json'
+      }).done(function (data) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Do you want to continue',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      })
+    })
+</script>
+{{/section}}
