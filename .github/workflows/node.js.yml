@@ -6,9 +6,7 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    
 jobs:
   build:
 
@@ -20,12 +18,16 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+    - name: Install server dependencies
+      run: npm i
+    - name: host
+      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "academy-for-test" #Must be unique in Heroku
@@ -40,4 +42,5 @@ jobs:
           HOST:  https://academy-for-test.herokuapp.com/
           HOST_NAME: https://academy-for-test.herokuapp.com/
           URL:  https://academy-for-test.herokuapp.com/
-    - run: npm i
+      
+    
