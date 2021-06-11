@@ -10,7 +10,8 @@ package-lock.json
 #.env
 .env
 .vscode
-
+.github
+.github/workflows/node.js.yml
 
 npm-debug.log*
 

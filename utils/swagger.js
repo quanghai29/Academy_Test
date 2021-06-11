@@ -21,11 +21,11 @@ const options = {
     servers: [
       {
         url: `${process.env.HOST_NAME}:${process.env.PORT}`,
-        description: 'Local host'
+        description: 'Local Host'
       },
       {
-        url: 'https://udemall.herokuapp.com/',
-        description: 'host'
+        url: `${process.env.URL}`,
+        description: 'Production Host'
       }
     ],
   },
