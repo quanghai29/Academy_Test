@@ -43,5 +43,12 @@ jobs:
           HD_HOST:  ${{secrets.HOST_NAME}}
           HD_HOST_NAME: ${{secrets.HOST_NAME}}
           HD_URL: ${{secrets.HOST_NAME}}
+    - name: Katalon Report Uploader
+      uses: katalon-studio/report-uploader@v0.0.8
+      env:
+          PASSWORD: 989c890f-a904-478c-90a4-14235033446b
+          PROJECT_ID: 149338
+          TYPE: katalon
+          REPORT_PATH: AutoReport
       
     
