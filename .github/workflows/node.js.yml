@@ -1,0 +1,46 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install server dependencies
+      run: npm i
+    - name: host
+      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "academy-for-test" #Must be unique in Heroku
+          heroku_email: "lequanghai540@gmail.com"
+      env:
+          DB_HOST: us-cdbr-east-04.cleardb.com
+          DB_PORT: 3306
+          DB_USER: bdb3d2ad4e1fad
+          DB_PASSWORD: 590dc949
+          DB_NAME: heroku_2918cd1316c63a1
+          NODE_ENVIROMMENT: pro
+          HOST:  https://academy-for-test.herokuapp.com/
+          HOST_NAME: https://academy-for-test.herokuapp.com/
+          URL:  https://academy-for-test.herokuapp.com/
+      
+    
