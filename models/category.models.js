@@ -20,7 +20,7 @@ module.exports = {
   },
 
   getAllCategroy(){
-    knex.raw(`call GetALLCategory(${param}, @outmsg); select @outmsg as outmsg;`);
-    return db.raw(`call GetALLCategory`)
+    //knex.raw(`call GetALLCategory(${param}, @outmsg); select @outmsg as outmsg;`);
+    //return db.raw(`call GetALLCategory`)
   }
 };
