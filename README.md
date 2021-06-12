@@ -15,4 +15,4 @@
 ### automation test
    project: automation-test-academy
    auto test  .....gg
-### notify
+### notify slack
