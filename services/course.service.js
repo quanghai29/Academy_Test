@@ -19,7 +19,7 @@ async function getCourseDetail(id) {
 
 async function getAllCourse() {
     let returnModel = {}; // code; message; data
-    const courses = await courseModel.all();
+    const courses = courseModel.all();
     if (courses == null) {
         returnModel.code = Code.Not_Found;
     } else {
@@ -38,7 +38,7 @@ async function getAllCourse() {
 
 async function insertCourse(course) {
     let returnModel = {};
-    const ret = await courseModel.add(course);
+    const ret = courseModel.add(course);
     course.id = ret[0];
     returnModel.code = Code.Created_Success;
     returnModel.message = Message.Created_Success;
