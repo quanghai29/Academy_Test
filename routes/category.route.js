@@ -14,7 +14,6 @@ const categoryService = require('../services/category.service');
  *         description: json data if sucess
  */
  router.get('/',async function (req, res) {
-     // test push demo
     const ret = await categoryService.getAllCategory();
     res.status(ret.code).json(ret.data);
 })
