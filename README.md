@@ -1,5 +1,5 @@
 # Academy_Test
- project for test
+ project for testing
 ### Required System
     install npm lastest version
     install nodejs lastest version
