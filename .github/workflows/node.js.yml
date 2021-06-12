@@ -54,7 +54,7 @@ jobs:
       uses: katalon-studio/katalon-studio-github-action@v2.1
       with:
           version: '7.5.5'
-          projectPath: 'https://github.com/quanghai29/Academy_Automation_Test.git'
+          projectPath: 'https://github.com/quanghai29/Academy_Automation_Test'
           args: '-noSplash -retry=0 -browserType=Chrome -statusDelay=15 -testSuitePath="Test Suites/DemoTestSuite" -apiKey= ${{ secrets.KATALON_API_KEY }} --config -webui.autoUpdateDrivers=true'
 
     
