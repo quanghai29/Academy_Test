@@ -14,4 +14,4 @@
         http://localhost:3000/view/course/add
 ### automation test
    project: automation-test-academy
-   auto test  .....
+   auto test  .....gg
