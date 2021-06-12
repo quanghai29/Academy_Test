@@ -19,7 +19,7 @@ async function getCourseDetail(id) {
 
 async function getAllCourse() {
     let returnModel = {}; // code; message; data
-    const courses = courseModel.all();
+    const courses = await courseModel.all();
     if (courses == null) {
         returnModel.code = Code.Not_Found;
     } else {
