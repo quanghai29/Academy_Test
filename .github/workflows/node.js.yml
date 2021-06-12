@@ -43,24 +43,13 @@ jobs:
           HD_HOST:  ${{secrets.HOST_NAME}}
           HD_HOST_NAME: ${{secrets.HOST_NAME}}
           HD_URL: ${{secrets.HOST_NAME}}
----
-name: Test CI
-
-on:
-  push:
-    branches: [ main ]
-    
-jobs:
-  build:
-
+          
+  test:
+  
     runs-on: windows-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Katalon Studio Github Action
       uses: katalon-studio/katalon-studio-github-action@v2.1
       with:
