@@ -44,7 +44,7 @@ jobs:
           HD_HOST_NAME: ${{secrets.HOST_NAME}}
           HD_URL: ${{secrets.HOST_NAME}}
           
-  automation test:
+  autotest:
   
     needs: build
     runs-on: windows-latest
