@@ -38,7 +38,7 @@ async function getAllCourse() {
 
 async function insertCourse(course) {
     let returnModel = {};
-    const ret = courseModel.add(course);
+    const ret = await courseModel.add(course);
     course.id = ret[0];
     returnModel.code = Code.Created_Success;
     returnModel.message = Message.Created_Success;
