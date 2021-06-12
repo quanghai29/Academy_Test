@@ -6,7 +6,7 @@ const moment = require('moment');
 //#region Quang Hai MTP
 async function getCourseDetail(id) {
     let returnModel = {}; // code; message; data
-    const course = await courseModel.single(id);
+    const course = await courseModel.singlle(id);
     if (course == null) {
         returnModel.code = Code.Not_Found;
     } else {
